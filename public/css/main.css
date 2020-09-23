@@ -1,0 +1,74 @@
+
+
+.auth-form {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    border: 1px solid #222;
+    box-shadow: 2px 2px 4px #222;
+    border-radius: 5px;
+}
+.auth-form .main-form {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+.auth-form .main-form button {
+    border-radius: 20px;
+}
+
+.auth-form .form-heading {
+    background-color: #222;
+    color: #fff;
+    height: 100px;
+    text-align: center;
+    padding-top: 30px;
+    width: 100%;
+}
+
+
+.card-container-margin-top {
+    margin-top: 50px;
+}
+
+.card-margin-bottom {
+    margin-bottom: 50px;
+}
+
+.align-center {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    width: 500px;
+}
+
+.auth-button {
+    margin-right: 8px;
+}
+.card-button-margin-right {
+    margin-right: 5px;
+}
+
+.policelogo {
+    width: 50px;
+    height: 45px;
+    border-radius: 3px;
+}
+
+#index-page-image {
+    width: 37%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 45px;
+}
+
+#index-page-image .image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
