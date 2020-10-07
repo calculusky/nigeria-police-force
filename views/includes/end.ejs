@@ -1,0 +1,12 @@
+<script src="/bootstrap/js/jquery.js"></script>
+    <script src="/bootstrap/js/popper.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+      const logoutLink = document.getElementById('logoutLink')
+      logoutLink.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.forms['logoutForm'].submit();
+      })
+    </script>
+  </body>
+</html>

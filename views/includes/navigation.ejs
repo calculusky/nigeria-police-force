@@ -1,6 +1,6 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">NPFABIS <img src="/images/policelogo.png" alt="" class="policelogo" ></a>
+        <a class="navbar-brand" href="<%= user === 'admin' ? '/admin' : '/' %>">NPFABIS <img src="/images/policelogo.png" alt="" class="policelogo" ></a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,12 +19,38 @@
                 Monitoring
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/monitoring/node">Node</a>
-                <a class="dropdown-item" href="#">Server</a>
+                    <a class="dropdown-item" href="/monitoring/nodes">Node</a>
+                    <a class="dropdown-item" href="#">Server</a>
+                </div>
             </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-info my-2 my-sm-0 border-0 auth-button text-white" type="submit">Admin (Logout)</button>
-            </form>
+            <% if(user === 'admin'){ %>
+                <div class="navbar-right-div">
+                <!-- <form class="form-inline my-2 my-lg-0" action="/admin/logout" method="post"> -->
+                    <% if(isAuthenticated){ %>
+                        <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <%= adminName %> 
+                            </a>
+                            <div class="dropdown-menu navbar-right-dropdown" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/admin/addsite">Add Node</a>
+                                <a class="dropdown-item" href="#">Add Server</a>
+                                <div class="dropdown-divider"></div>                               
+                                <a class="dropdown-item" href="javascript:void(0)" id="logoutLink">Logout</a>
+                            </div>
+                        </li>
+                        <form id="logoutForm" action="/admin/logout" method="POST"></form>
+                        
+                        <!-- <button class="btn btn-outline-light my-2 my-sm-0 border-0 auth-button" type="submit">< adminName %>  (Logout)</button> -->
+                    <% } else { %>
+                        <a class="btn btn-outline-light my-2 my-sm-0 auth-button" href="/admin/login" role="button">Login</a>
+                        <a class="btn btn-outline-light my-2 my-sm-0 auth-button" href="/admin/signup" role="button">Signup</a> 
+                   <% } %>
+                </ul>
+                </div> 
+                <!-- </form> -->
+            <% } %> 
+           
         </div>
         </nav>

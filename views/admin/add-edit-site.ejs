@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/animate.css" type="text/css">
+    <link rel="stylesheet" href="/css/main.css" type="text/css">
+    <title>Add Site</title>
+</head>
+<body>
+    <%- include('../includes/navigation') %> 
+
+
+      <!-- sign in -->
+     <div class="container">
+       <div class="auth-form col-md-6">
+         <div class="form-heading">
+           <h4><%= editing ? 'EDIT SITE' : 'ADD NEW SITE' %> </h4>
+         </div>
+        <form id="addEditSiteForm" class="main-form" action="<%= editing ? '/admin/editsite' : '/admin/addsite' %> " method="POST" novalidate>          
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-12 mb-3">
+                  <label for="validationServer01">Site Name</label>
+                  <input
+                     name="state" 
+                     type="text" 
+                     class="form-control form-input-bordercolor
+                     <% if(validationErrors.length > 0){ %>
+                        <%= validationErrors.find(e => e.param === 'state') ? 'is-invalid' : 'is-valid' %> 
+                     <% } %>" 
+                     id="validationServer01" 
+                     value="<% if(editing || hasError) { %><%= site.state %><% } %>">
+                     <input type="hidden" name="siteId" value="<%= editing ? site._id : '' %>">
+                     <% if(validationErrors.find(e => e.param === 'state')){ %>
+                      <% const message = validationErrors.find(e => e.param === 'state') %> 
+                      <div id="validationServer01Feedback" class="invalid-feedback">                     
+                        <%= message.msg %> 
+                      </div>
+                     <% } %>
+                </div>
+              </div>  
+            </div>
+            
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-12 mb-3">
+                  <label for="validationServer01">Site Link</label>
+                  <input 
+                     name="url" 
+                     type="text" 
+                     class="form-control form-input-bordercolor
+                     <% if(validationErrors.length > 0){ %>
+                      <%= validationErrors.find(e => e.param === 'url') ? 'is-invalid' : 'is-valid' %> 
+                      <% } %>" 
+                     id="validationServer01" 
+                     value="<% if(editing || hasError) { %><%= site.url %><% } %>">
+                     <% if(validationErrors.find(e => e.param === 'url')){ %>
+                      <% const message = validationErrors.find(e => e.param === 'url') %> 
+                      <div id="validationServer01Feedback" class="invalid-feedback">                     
+                        <%= message.msg %> 
+                      </div>
+                     <% } %>
+                </div>
+              </div> 
+            </div>
+                     
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12 mb-3">
+                <button id="addEditSiteSubmitButton" class="btn btn-primary col-md-12" type="submit"><%= editing ? 'Update Site' : 'Add Site' %> </button>
+              </div>
+            </div>              
+          </div>
+
+        </form>    
+       </div>        
+     </div>
+    <script src="/bootstrap/js/jquery.js"></script>
+    <script src="/bootstrap/js/popper.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">    
+      const button = document.getElementById('addEditSiteSubmitButton');
+      const spanElement = document.createElement('span');
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        spanElement.classList.add('spinner-border', 'spinner-border-sm');
+        const attributes = ['role', 'aria-hidden'];
+        const values = ['status', 'true'];
+        for(let i=0; i<attributes.length; i++){
+            spanElement.setAttribute(attributes[i], values[i])
+        }
+        button.setAttribute('disabled', true);
+        button.appendChild(spanElement);
+        document.forms['addEditSiteForm'].submit();         
+      })
+
+      //submitForm('addEditSiteForm','addEditSiteSubmitButton')
+    </script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

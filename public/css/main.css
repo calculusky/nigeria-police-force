@@ -17,6 +17,9 @@
     margin-top: 30px;
     border-radius: 5px;
 }
+.form-input-bordercolor {
+    border-color: rgb(64, 63, 119);
+}
 
 .auth-form .main-form button {
     border-radius: 20px;
@@ -71,4 +74,15 @@
     width: 100%;
     height: auto;
     border-radius: 5px;
+}
+
+.navbar-right-div {
+    margin-right: 20px;
+}
+.navbar-right-dropdown {
+   min-width: 140px;
+}
+.navbar-right-dropdown a:hover {
+    color: white;
+    background-color: rgb(1, 1, 141);
 }

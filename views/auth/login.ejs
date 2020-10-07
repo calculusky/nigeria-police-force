@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/animate.css" type="text/css">
     <link rel="stylesheet" href="/css/main.css" type="text/css">
-    <title>Login</title>
+    <title><%= title %> </title>
 </head>
 <body>
     <%- include('../includes/navigation') %> 
@@ -18,15 +19,29 @@
          <div class="form-heading">
            <h4>NPFABIS LOGIN</h4>
          </div>
-        <form class="main-form" novalidate>          
+        <form class="main-form" action="/admin/login" method="POST" id="loginform" novalidate>          
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-12 mb-3">
                   <label for="validationServer01">Email</label>
-                  <input type="text" class="form-control is-valid" id="validationServer01" value="Mark" required>
-                  <!-- <div class="valid-feedback">
-                   valid
-                  </div> -->
+                  <input 
+                     type="text"
+                     name="email" 
+                     class="form-control form-input-bordercolor
+                        <% if(validationErrors.length > 0) { %>
+                            <%= validationErrors.find(e => e.param === 'email') ? 'is-invalid': 'is-valid' %>
+                        <% } %>
+                        <% if(loginErrors.length > 0){ %>
+                            <%= 'is-valid' %> 
+                       <% } %>" 
+                     id="validationServer01" 
+                     value="<%= oldInputs.email %>">
+                     <% if(validationErrors.find(e => e.param === 'email')){ %>
+                        <% const message = validationErrors.find(e => e.param === 'email') %> 
+                        <div id="validationServer01Feedback" class="invalid-feedback">                     
+                          <%= message.msg %> 
+                        </div>
+                     <% } %> 
                 </div>
               </div>  
             </div>
@@ -34,11 +49,31 @@
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-12 mb-3">
-                  <label for="validationServer01">Password</label>
-                  <input type="password" class="form-control is-valid" id="validationServer01" value="Mark" required>
-                  <!-- <div class="valid-feedback">
-                   valid
-                  </div> -->
+                  <label for="validationServer02">Password</label>
+                  <input 
+                     type="password" 
+                     name="password"
+                     class="form-control form-input-bordercolor
+                        <% if(validationErrors.length > 0) { %>
+                            <%= validationErrors.find(e => e.param === 'password') ? 'is-invalid': 'is-valid' %>
+                        <% } %>
+                        <% if(loginErrors.length > 0){ %>
+                             <%= loginErrors.find(e => e.param === 'password') ? 'is-invalid': 'is-valid' %> 
+                       <% } %>" 
+                     id="validationServer02" 
+                     value="<%= oldInputs.password %>">
+                     <% if(validationErrors.find(e => e.param === 'password')){ %>
+                        <% const message = validationErrors.find(e => e.param === 'password') %> 
+                        <div id="validationServer01Feedback" class="invalid-feedback">                     
+                          <%= message.msg %> 
+                        </div>
+                     <% } %>
+                     <% if(loginErrors.find(e => e.param === 'password')){ %>
+                        <% const message = loginErrors.find(e => e.param === 'password') %> 
+                        <div id="validationServer01Feedback" class="invalid-feedback">                     
+                          <%= message.msg %> 
+                        </div>
+                     <% } %>                    
                 </div>
               </div> 
             </div>
@@ -46,16 +81,32 @@
           <div class="form-group">
             <div class="form-row">
               <div class="col-md-12 mb-3">
-                <button class="btn btn-primary col-md-12" type="submit">Login</button>
+                <button class="btn btn-primary col-md-12" type="submit" id="authButton" onclick="clickedAuthButton(event)">Login</button>
               </div>
             </div>              
           </div>
-
         </form>    
        </div>        
      </div>
     <script src="/bootstrap/js/jquery.js"></script>
     <script src="/bootstrap/js/popper.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+          function clickedAuthButton(event) {
+            //console.log(event, 'event------')
+           event.preventDefault();
+           const button = document.getElementById('authButton');
+           const spanElement = document.createElement('span');
+           spanElement.classList.add('spinner-border', 'spinner-border-sm');
+           const attributes = ['role', 'aria-hidden'];
+           const values = ['status', 'true'];
+           for(let i=0; i<attributes.length; i++){
+               spanElement.setAttribute(attributes[i], values[i])
+           }
+           button.setAttribute('disabled', true);
+           button.appendChild(spanElement);
+           document.forms['loginform'].submit(); 
+         }
+    </script>
 </body>
 </html>

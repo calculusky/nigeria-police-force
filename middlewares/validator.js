@@ -1,5 +1,6 @@
 const { check, body } = require('express-validator');
 const User = require('../models/user');
+const Site = require('../models/site');
 
 exports.signupValidator = [
     body('firstname')
@@ -10,25 +11,74 @@ exports.signupValidator = [
       .isAlpha()
       .withMessage('Lastname must be only alphabetical characters')
       .trim(),
-    body('password', 'Password must contain only alphanumeric with minimum of 5 characters')
+    body('password', 'Password must be alphanumeric with minimum of 5 characters')
       .isLength({min: 5})
-      .isAlphanumeric()
-      .trim(),
+      .isAlphanumeric(),
     body('confirmpassword')
       .custom((value, {req}) => {
           if(value !== req.body.password){
-              throw new Error('password do not match')
+              throw new Error('password do not match');
+          }
+          if(value === ''){
+            throw new Error('must not be empty');
           }
           return true;
-      }),
+      })
+      .trim(),
     body('email')
-      .isEmail()
-      .withMessage('Invalid email')
+      .trim()
+      .isEmail()  
+      .withMessage('please enter a valid email')
       .custom(async(value, {req}) => {
           const user = await User.findOne({email: value});
           if(user){
               return Promise.reject('Email already exists');
           }
       })
-     
+      .normalizeEmail(),      
+    body('identitycode')
+        .custom((value, {req}) => {
+            if(value === ''){
+                throw new Error('must not be empty')
+            }
+            if(value !== '25036'){
+                throw new Error('invalid code');
+            }
+            return true;
+        })
+        .trim()    
+];
+
+exports.loginValidator = [
+    body('email')
+      .trim()
+      .isEmail()
+      .withMessage('Please enter a valid email') 
+      .custom(async(value, {req}) => {
+          const user = await User.findOne({email: value});
+          if(!user){
+              return Promise.reject('Email does not exist');
+          }
+      })     
+      .normalizeEmail(),
+    body('password', 'Password must be alphanumeric with minimum of 5 characters')
+      .isLength({min: 5})
+      .isAlphanumeric()
+]
+
+exports.addEditSiteValidator = [
+    body('state')
+     .trim()
+     .isAlpha()
+     .withMessage('Site name must be alphabet')
+     .custom(async(value, {req}) => {
+         const site = await Site.findOne({state: value});
+         if(site){
+             return Promise.reject('Site already exists')
+         }
+     }),
+    body('url')
+     .trim()
+     .isURL()
+     .withMessage('Please enter a valid url')    
 ]
