@@ -85,8 +85,7 @@ exports.postEditSite = async (req, res, next) => {
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         return res.status(422).render('admin/add-edit-site', {
-            user: 'admin',
-            adminName: req.user.firstname,
+            adminName: userConfig.adminName,
             user: userConfig.user,
             path: '/admin/edisite',
             hasError: true,

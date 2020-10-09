@@ -1,5 +1,6 @@
-
-
+body {
+    background-color:white;
+}
 .auth-form {
     padding-left: 0;
     padding-right: 0;
@@ -26,7 +27,7 @@
 }
 
 .auth-form .form-heading {
-    background-color: #222;
+    background-color:#343a40;
     color: #fff;
     height: 100px;
     text-align: center;
@@ -35,19 +36,22 @@
 }
 
 
-.card-container-margin-top {
+.custom-card {
     margin-top: 50px;
 }
 
-.card-margin-bottom {
+.card-element {
     margin-bottom: 50px;
 }
+.card-element .main-card {
+    box-shadow:  1px 1px 2px rgb(165, 165, 165);
+}
+.card-mouse-in {
+   background-color: rgba(206, 200, 200, 0.233);
+}
 
-.align-center {
-    margin-left: auto;
-    margin-right: auto;
+.custom-container {
     margin-top: 100px;
-    width: 500px;
 }
 
 .auth-button {
@@ -56,11 +60,15 @@
 .card-button-margin-right {
     margin-right: 5px;
 }
+.anchor-button-public {
+    width: 100%;
+    background-color: #3c9ca8;
+}
 
 .policelogo {
-    width: 50px;
-    height: 45px;
-    border-radius: 3px;
+    width: 40px;
+    height: 35px;
+    border-radius: 50%;
 }
 
 #index-page-image {
@@ -79,10 +87,26 @@
 .navbar-right-div {
     margin-right: 20px;
 }
+
+.navbar-custom-dropdown {
+    font-size: 15px;
+ }
+ .navbar-custom-dropdown a {
+     margin-bottom: 5px;
+ }
+ .navbar-custom-dropdown a:hover {
+     color: white;
+     background-color: #343a40;
+ }
+
 .navbar-right-dropdown {
    min-width: 140px;
+   font-size: 15px;
+}
+.navbar-right-dropdown a {
+    margin-bottom: 5px;
 }
 .navbar-right-dropdown a:hover {
     color: white;
-    background-color: rgb(1, 1, 141);
+    background-color: #343a40;
 }

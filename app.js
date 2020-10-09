@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const { userOptions } = require('./utils/helper');
+const { getError404 } = require('./controllers/error');
 const express = require('express');
 const app = express();
 
@@ -76,17 +77,17 @@ app.use('/admin', adminRoutes);
 app.use(npfabisRoutes);
 
 //handle errors
+app.use(getError404);
 app.use((error, req, res, next) => {
-    exports.getError = (req, res, next) => {
+    console.log(error, 'thrown error')
         const userConfig = userOptions(req)
         res.render('error/error', {
             user: userConfig.user,
             adminName: userConfig.adminName,
-            title: 'Error',
+            title: 'Error 500',
             path: '/error'
         });
-    }
-})
+});
 
 //connect to db
 const port = process.env.PORT || 8080;

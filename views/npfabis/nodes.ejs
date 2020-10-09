@@ -14,25 +14,22 @@
       <%- include('../includes/navigation') %> 
 
 
-      <div class="container align-center">
+      <div class="container custom-container">
         <div class="row animate__animated animate__zoomIn animate__slow">
-            <div class="col-md-12">
-                <h1>NODE MONITORING</h1>
-            </div>
-        </div>
-      </div>
-
-      <div class="container card-container-margin-top">  
+          <div class="col-12 col-sm-12 col-md-12">
+              <h1 style="text-align: center;">NODE MONITORING</h1>
+          </div>
+        </div>  
             <% if(sites.length > 0){ %>
-              <div class="row">
+              <div class="row custom-card">               
                 <% for(let site of sites){ %>
-                  <div class="col-12 col-md-4 card-margin-bottom" id="card-div">
-                    <div class="card" style="width: 18rem;">
+                  <div class="col-12 col-sm-6 col-md-4 card-element" id="card-div">
+                    <div class="card main-card" id="main-cardId<%= site._id %>" onmouseover="cardMouseIn(this)" onmouseout="cardMouseOut(this)">
                         <div class="card-body">
                           <input type="hidden" name="siteId" value="<%= site._id %>">
                           <h5 class="card-title"><%= site.state %> Sites</h5>
                           <p class="card-text">View all nodes in <%= site.state %> State</p>
-                          <a href="<%= site.url %>" class="btn btn-info card-button-margin-right" target="_blank">Visit site</a>
+                          <a href="<%= site.url %>" class="btn btn-info card-button-margin-right<% if(!isAuthenticated){ %> <%= 'anchor-button-public'  %> <%} %>" target="_blank">Visit site</a>
                           <% if(isAuthenticated){ %>
                               <a href="/admin/editsite/<%= site._id %>?edit=true" class="btn btn-success card-button-margin-right">Edit</a>
                               <button class="btn btn-danger card-button-margin-right" data-toggle="modal" data-target="#deletesite" onclick="siteData(this)">Delete</button>
@@ -41,6 +38,7 @@
                       </div>
                   </div>
                 <% } %>
+               </div>
                  <!-- Modal -->
                  <div class="modal fade" id="deletesite" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered">
@@ -61,7 +59,6 @@
                     </div>
                   </div>
                 </div> 
-              </div>
             <% } else { %>
                 <h3>Site is empty!</h3>
                 <a href="/admin/addsite" class="btn btn-info">Add Site</a>
@@ -72,6 +69,17 @@
     <script src="/bootstrap/js/popper.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/admin.js"></script>
+    <script>
+      //document.cardStyle = null;
+      function cardMouseIn(card) {
+        console.log(card)
+        card.classList.add('card-mouse-in');
+      }
+      function cardMouseOut(card) {
+        console.log(card)
+        card.classList.remove('card-mouse-in');
+      }
+    </script>
   </body>
 </html>
 
