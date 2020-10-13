@@ -1,0 +1,18 @@
+2020-10-13 12:43:05 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\NPFABIS-LAG38\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file "C:\LEYSTEL\software development\npfabis\app.js" --scriptoptions= --log "NPFABIS Web Service wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-10-13 12:43:05 - Started 68840
+2020-10-13 12:43:44 - Stopping npfabiswebservice.exe
+2020-10-13 12:43:44 - ProcessKill 68840
+2020-10-13 12:43:45 - Found child process: 54228 Name: conhost.exe
+2020-10-13 12:43:45 - Found child process: 57348 Name: node.exe
+2020-10-13 12:43:45 - Stopping process 54228
+2020-10-13 12:43:45 - Send SIGINT 54228
+2020-10-13 12:43:45 - SIGINT to 54228 failed - Killing as fallback
+2020-10-13 12:43:45 - Stopping process 57348
+2020-10-13 12:43:45 - Send SIGINT 57348
+2020-10-13 12:43:45 - SIGINT to 57348 failed - Killing as fallback
+2020-10-13 12:43:45 - Stopping process 68840
+2020-10-13 12:43:45 - Send SIGINT 68840
+2020-10-13 12:43:45 - SIGINT to 68840 failed - Killing as fallback
+2020-10-13 12:43:45 - Finished npfabiswebservice.exe
+2020-10-13 12:44:10 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\NPFABIS-LAG38\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file "C:\LEYSTEL\software development\npfabis\app.js" --scriptoptions= --log "NPFABIS Web Service wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2020-10-13 12:44:10 - Started 20336

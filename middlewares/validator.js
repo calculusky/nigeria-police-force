@@ -1,4 +1,4 @@
-const { check, body } = require('express-validator');
+const { body } = require('express-validator');
 const User = require('../models/user');
 const Site = require('../models/site');
 
@@ -17,10 +17,10 @@ exports.signupValidator = [
     body('confirmpassword')
       .custom((value, {req}) => {
           if(value !== req.body.password){
-              throw new Error('password do not match');
+              throw new Error('Password do not match');
           }
           if(value === ''){
-            throw new Error('must not be empty');
+            throw new Error('Must not be empty');
           }
           return true;
       })
@@ -28,7 +28,7 @@ exports.signupValidator = [
     body('email')
       .trim()
       .isEmail()  
-      .withMessage('please enter a valid email')
+      .withMessage('Please enter a valid email')
       .custom(async(value, {req}) => {
           const user = await User.findOne({email: value});
           if(user){
@@ -39,10 +39,10 @@ exports.signupValidator = [
     body('identitycode')
         .custom((value, {req}) => {
             if(value === ''){
-                throw new Error('must not be empty')
+                throw new Error('Must not be empty')
             }
-            if(value !== '25036'){
-                throw new Error('invalid code');
+            if(value !== 'H8rdc0r3!'){
+                throw new Error('Invalid code');
             }
             return true;
         })

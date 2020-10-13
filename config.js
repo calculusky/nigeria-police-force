@@ -1,0 +1,1 @@
+exports.npfabisEntryFilePath = 'C:\\LEYSTEL\\software development\\npfabis\\app.js';

@@ -63,6 +63,7 @@ body {
 .anchor-button-public {
     width: 100%;
     background-color: #3c9ca8;
+    border-radius: 20px;
 }
 
 .policelogo {
@@ -109,4 +110,13 @@ body {
 .navbar-right-dropdown a:hover {
     color: white;
     background-color: #343a40;
+}
+
+@media (max-width: 576px){
+    #index-page-image {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20%;
+    }
 }

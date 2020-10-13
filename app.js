@@ -81,7 +81,7 @@ app.use(getError404);
 app.use((error, req, res, next) => {
     console.log(error, 'thrown error')
         const userConfig = userOptions(req)
-        res.render('error/error', {
+        res.render('error/500', {
             user: userConfig.user,
             adminName: userConfig.adminName,
             title: 'Error 500',
