@@ -16,3 +16,13 @@
 2020-10-13 12:43:45 - Finished npfabiswebservice.exe
 2020-10-13 12:44:10 - Starting C:\Program Files\nodejs\node.exe  --harmony C:\Users\NPFABIS-LAG38\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js --file "C:\LEYSTEL\software development\npfabis\app.js" --scriptoptions= --log "NPFABIS Web Service wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
 2020-10-13 12:44:10 - Started 20336
+2020-10-14 18:17:25 - Stopping npfabiswebservice.exe
+2020-10-14 18:17:26 - ProcessKill 20336
+2020-10-14 18:17:46 - Shutdown exception
+Message:The type initializer for 'System.Management.ManagementPath' threw an exception.
+Stacktrace:   at System.Management.ManagementScope._Clone(ManagementScope scope, IdentifierChangedEventHandler handler)
+   at System.Management.ManagementObjectSearcher..ctor(ManagementScope scope, ObjectQuery query, EnumerationOptions options)
+   at winsw.WrapperService.GetChildPids(Int32 pid)
+   at winsw.WrapperService.StopProcessAndChildren(Int32 pid)
+   at winsw.WrapperService.StopIt()
+   at winsw.WrapperService.OnShutdown()
