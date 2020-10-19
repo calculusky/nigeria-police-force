@@ -87,39 +87,40 @@ body {
 }
 .flex-container-sub {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     
+}
+.flex-nav{
+    color: #fff;
+    border-radius: 7px;
+    box-shadow: 1px 1px 2px #222;
+    background-color: #343a40;
 }
 .flex-child-sub {
     flex: 1;
     margin-top: 30px;
-    background-color: darkgoldenrod;
-    padding: 15px;
+    padding: 15px 10px;
     border-radius: 7px;
-    text-align: center;
-   
+    border: 1px solid #fff;
+    box-shadow: 1px 1px 2px #fff;
+
 }
 .flex-child-sub img {
-    display: inline-block;
+    display: block;
+    margin-right: 100px;
     width: 65px;
-    height:65px
+    height:65px;
+    float: right;
 }
 .flex-child-sub span {
-    
-    margin-bottom: 25px;
-    
-  
-   background-color: darkgrey;
+  margin-right: 30px; 
+  font-size: 25px;
 }
 
 
-.red{
-    background-color: crimson;
-}
-.blue {
-    background-color: cyan;
-}
+
+
 /* .index-page {
     width: 30%;
     height: 30%;
