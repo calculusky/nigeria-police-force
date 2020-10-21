@@ -4,7 +4,8 @@ const { userOptions } = require('../utils/helper');
 exports.getIndex = (req, res, next) => {
     res.render('npfabis/index', {
         user: 'public',
-        path: '/'
+        path: '/',
+        title: 'NPF Management System'
     });
 }
 
@@ -17,6 +18,7 @@ exports.getNodes = async (req, res, next) => {
         user: userConfig.user,
         adminName: userConfig.adminName,
         path: '/monitoring/node',
+        title: 'Network Monitoring',
         sites: sites
     });
    } catch (error) {

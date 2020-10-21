@@ -4,61 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/css/animate.css" type="text/css">
     <link rel="stylesheet" href="/css/main.css" type="text/css">
-    <title>NPFABIS</title>
+    <title><%= title %></title>
 </head>
 <body>
     <%- include('../includes/navigation') %>     
      <div class="container">
       <div class="row flex-container" style="margin-top: 100px;">       
-          <div class="col-md-6 col-sm-6 flex-child red">
+          <div class="col-md-6 col-sm-12 col-12 flex-child flex-child-img-div">
             <img src="/images/policelogo.png" alt="police logo">
           </div>
-          <div class="col-md-6 col-sm-6 col-6 flex-child flex-nav">
-            <!-- <img src="/images/policelogo.png" alt="police logo"> -->
-            
-           <div class="sub-flex-contentl">
-            <div class="flex-container-sub">
-              <div class="flex-child-sub">
-                <span>Case Management</span>
-                <img src="/images/policelogo.png" alt="police logo">
-              </div>
-             </div>
 
-             <div class="flex-container-sub">
-              <div class="flex-child-sub">
-                <span>Biometric Enrolment</span>
-                <img src="/images/policelogo.png" alt="police logo">
-              </div>
-             </div>
 
-             <div class="flex-container-sub">
-              <div class="flex-child-sub">
-                <span>Network Monitoring</span>
-                <img src="/images/policelogo.png" alt="police logo">
-              </div>
-             </div>
-
-              <!-- <div class="flex-container-sub">
-                <div class="flex-child-sub">
+          <div class="col-md-6 col-sm-12 col-12 flex-child flex-nav">           
+              <div class="flex-container-sub">
+                <div id="case-div" class="flex-child-sub flex-child-span-div" onclick="caseManagementLink()" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
                   <span>Case Management</span>
                 </div>
                 <div class="flex-child-sub">
-                  <img src="/images/policelogo.png" alt="police logo">
+                  <img src="/images/case.jpeg" alt="case management icon" onclick="caseManagementLink()">
                 </div>
               </div>
-
+              <hr>
               <div class="flex-container-sub">
+                <div id="bio-div" class="flex-child-sub flex-child-span-div" onclick="biometricEnrollLink()" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
+                  <span>Biometric Enrolment</span>
+                </div>
                 <div class="flex-child-sub">
+                  <img src="/images/fingerprint.png" alt="bio enroll icon" onclick="biometricEnrollLink()">
+                </div>
+              </div>
+               <hr>
+              <div class="flex-container-sub">
+                <div  id="node-div" class="flex-child-sub flex-child-span-div" onclick="nodeMonitoringLink()" onmouseover="addHoverClass(this)" onmouseout="removeHoverClass(this)">
                   <span>Network Monitoring</span>
                 </div>
                 <div class="flex-child-sub">
-                  <img src="/images/policelogo.png" alt="police logo">
+                  <img src="/images/network.png" alt="network monitoring icon" onclick="nodeMonitoringLink()">
                 </div>
-              </div> -->
-            </div>
+              </div> 
           </div>       
       </div>
      </div>
@@ -66,6 +53,7 @@
     <script src="/bootstrap/js/popper.js"></script>
     <script src="/bootstrap/js/bootstrap.min.js"></script>
     <script src="/js/admin.js"></script>
+    <script src="/js/main.js"></script>
     <script>
     </script>
 </body>

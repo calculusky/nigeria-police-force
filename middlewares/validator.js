@@ -1,6 +1,7 @@
 const { body } = require('express-validator');
 const User = require('../models/user');
 const Site = require('../models/site');
+const { normalizeName } = require('../utils/helper');
 
 exports.signupValidator = [
     body('firstname')
@@ -66,13 +67,14 @@ exports.loginValidator = [
       .isAlphanumeric()
 ]
 
-exports.addEditSiteValidator = [
+exports.addSiteValidator = [
     body('state')
      .trim()
      .isAlpha()
      .withMessage('Site name must be alphabet')
      .custom(async(value, {req}) => {
-         const site = await Site.findOne({state: value});
+         const sanName = normalizeName(value)
+         const site = await Site.findOne({state: sanName});
          if(site){
              return Promise.reject('Site already exists')
          }
@@ -82,3 +84,15 @@ exports.addEditSiteValidator = [
      .isURL()
      .withMessage('Please enter a valid url')    
 ]
+
+exports.editSiteValidator = [
+  body('state')
+   .trim()
+   .isAlpha()
+   .withMessage('Site name must be alphabet'),
+  body('url')
+   .trim()
+   .isURL()
+   .withMessage('Please enter a valid url')    
+]
+

@@ -1,6 +1,11 @@
 body {
-    background-color:white;
+    background-color: #fff;
 }
+
+.hidden {
+    display: none;
+}
+
 .auth-form {
     padding-left: 0;
     padding-right: 0;
@@ -34,7 +39,6 @@ body {
     padding-top: 30px;
     width: 100%;
 }
-
 
 .custom-card {
     margin-top: 50px;
@@ -77,46 +81,50 @@ body {
 }
 .flex-child {
     flex: 1;
-}
-.flex-child:first-child {
-    margin-right: 90px;
+    margin-bottom: 50px;
 }
 
-.sub-flex-content {
-    display: block;
-}
 .flex-container-sub {
     display: flex;
-    /* justify-content: center; */
-    align-items: center;
-    
+    padding-bottom: 30px;    
 }
 .flex-nav{
-    color: #fff;
-    border-radius: 7px;
-    box-shadow: 1px 1px 2px #222;
-    background-color: #343a40;
+    /* color: #fff; */
+    border-radius: 4px;
+    box-shadow: 1px 1px 5px #222;
+    /* background-color: lightsalmon; */
 }
 .flex-child-sub {
     flex: 1;
     margin-top: 30px;
     padding: 15px 10px;
-    border-radius: 7px;
-    border: 1px solid #fff;
-    box-shadow: 1px 1px 2px #fff;
-
+    border-radius: 1px;
+    /* border-top: 1px solid #000; */
+    height: 95px;
 }
 .flex-child-sub img {
-    display: block;
-    margin-right: 100px;
-    width: 65px;
+    display: inline-block;
     height:65px;
-    float: right;
+    cursor: pointer;
+}
+.flex-child-span-div {
+    border-radius: 3px;
+    text-align: center;
+    padding-top: 30px;
+    background-color: green;
+    cursor: pointer;
+}
+.flex-child-span-div-hover {
+    /* opacity: 0.7; */
+    /* background-color: rgba(0, 128, 0, 0.767); */
+    background-color: rgb(1, 68, 1);
 }
 .flex-child-sub span {
-  margin-right: 30px; 
-  font-size: 25px;
+  /* padding-left: 30px; */
+  font-size: 20px;
+  color: white;
 }
+
 
 
 
@@ -128,9 +136,7 @@ body {
     background-color: cadetblue;
 } */
 
-.index-page.image {
-    
-   
+.index-page.image {  
     border-radius: 5px;
 }
 
@@ -164,7 +170,15 @@ body {
 .disp-inline {
     display: inline-block;
 }
+  nav ul > li > a:hover {
+    color: yellow !important;
+}
 
+hr {
+    margin-top: -5px;
+    margin-bottom: -5px;
+    box-shadow: 1px 1px 1px #ccc;
+}
 /* @media (max-width: 576px){
     #index-page-image {
         width: 100%;
@@ -173,3 +187,21 @@ body {
         margin-top: 20%;
     }
 } */
+
+@media (max-width: 767px){
+    .flex-child:first-child {
+        /* background-color: #3c9ca8;  */
+        justify-content: center;
+        display: flex;
+    } 
+}
+
+@media (min-width: 768px){
+    .flex-child:first-child {
+        margin-right: 90px;
+       
+    }
+    .flex-child-img-div {
+        margin-left: -60px;
+    }
+}

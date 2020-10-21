@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { checkPermission } = require('../middlewares/checkPermission');
-const { addEditSiteValidator } = require('../middlewares/validator');
+const { addSiteValidator, editSiteValidator } = require('../middlewares/validator');
 const {
     getAddSite,
     getIndex,
@@ -13,9 +13,9 @@ const {
 
 router.get('/', checkPermission, getIndex);
 router.get('/addsite', checkPermission, getAddSite);
-router.post('/addsite', addEditSiteValidator, postAddSite);
+router.post('/addsite', addSiteValidator, postAddSite);
 router.get('/editsite/:siteId',  checkPermission, getEditSite)
-router.post('/editsite', addEditSiteValidator, postEditSite)
+router.post('/editsite', editSiteValidator, postEditSite)
 router.post('/deletesite/:siteId', checkPermission, deleteSite);
 
 module.exports = router;

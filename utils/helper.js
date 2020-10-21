@@ -1,6 +1,6 @@
 
 exports.normalizeName = (name) => {
-    return name.charAt(0).toUpperCase() + name.slice(1);
+    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 }
 
 exports.userOptions = (req, userConfig = { user: 'public', adminName: undefined}) => {

@@ -10,6 +10,7 @@ exports.getIndex = async (req, res, next) => {
         user: userConfig.user,
         adminName: userConfig.adminName,
         path: '/admin',
+        title: 'NPF Management System'
     })
 }
 
@@ -18,6 +19,7 @@ exports.getAddSite = async (req, res, next) => {
             adminName: req.user.firstname,
             user: 'admin',
             path: '/admin/addsite',
+            title: 'Add Site',
             hasError: false,
             editing: false,
             validationErrors: []
@@ -34,6 +36,7 @@ exports.postAddSite = async (req, res, next) => {
             adminName: req.user.firstname,
             user: 'admin',
             path: '/admin/addsite',
+            title: 'Add Site',
             hasError: true,
             editing: false,
             validationErrors: errors.array(),
@@ -71,6 +74,7 @@ exports.getEditSite = async (req, res, next) => {
         adminName: req.user.firstname,
         user: 'admin',
         path: '/admin/addsite',
+        title: 'Edit Site',
         hasError: false,
         editing: editmode,
         site: site,
@@ -88,6 +92,7 @@ exports.postEditSite = async (req, res, next) => {
             adminName: userConfig.adminName,
             user: userConfig.user,
             path: '/admin/edisite',
+            title: 'Edit Site',
             hasError: true,
             editing: true,
             validationErrors: errors.array(),
