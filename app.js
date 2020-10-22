@@ -1,8 +1,11 @@
 require('dotenv').config();
 const path = require('path');
+const fs = require('fs');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const morgan = require('morgan');
+const compression = require('compression');
 const { userOptions } = require('./utils/helper');
 const { getError404 } = require('./controllers/error');
 const express = require('express');
@@ -16,6 +19,7 @@ const store = new MongoDBStore({
     uri: process.env.MONGO_DB_URL,
     collection: 'sessions'
 })
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a'});
 
 //import routes
 const authRoutes = require('./routes/auth');
@@ -31,6 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(path.join(__dirname, 'images')))
 
 //register middlewares
+app.use(compression());
+app.use(morgan('combined', { stream: accessLogStream }));
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 app.use(session({

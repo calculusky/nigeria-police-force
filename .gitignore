@@ -2,3 +2,4 @@ node_modules
 .envm
 test.ejs
 daemon
+access.log
